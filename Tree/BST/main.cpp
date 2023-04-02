@@ -2,6 +2,7 @@
 
 using namespace std;
 
+// Node class to create tree node 
 class Node
 {
 public:
@@ -18,6 +19,8 @@ public:
     }
 };
 
+
+// function to insert data in the node and insert node in tree
 Node* insertIntoBST(Node *root, int data)
 {
     if (root == NULL)
@@ -37,6 +40,8 @@ Node* insertIntoBST(Node *root, int data)
     }
 }
 
+
+//function to traverse tree 
 void treeTraverse(Node *root)
 {
     if (root == NULL)
