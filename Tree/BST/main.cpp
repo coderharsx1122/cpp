@@ -73,6 +73,7 @@ Node* Search(Node* root, int targetData){
 
 int main()
 {
+    // create node
     Node* root = NULL;
     // insert nodes with data
     root = insertIntoBST(root, 12);
@@ -87,6 +88,6 @@ int main()
     // search element in tree
     Node* ans = Search(root,1);
 
-    
+
     return 0;
 }
