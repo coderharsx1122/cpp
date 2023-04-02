@@ -1,3 +1,8 @@
+/*
+ BST -> creating BST
+     ->Inserting node
+     ->Travesing BST
+*/
 #include <iostream>
 
 using namespace std;
@@ -53,14 +58,35 @@ void treeTraverse(Node *root)
     cout << root->data << endl;
 }
 
+
+// serach in bst
+Node* Search(Node* root, int targetData){
+    if(root==NULL) return NULL;
+    if(targetData>root->data){
+        return  Search( root->right,targetData);
+    }
+    if(targetData<root->data){
+        return  Search( root->left,targetData);
+    }
+    return root;
+}
+
 int main()
 {
     Node* root = NULL;
+    // insert nodes with data
     root = insertIntoBST(root, 12);
     root = insertIntoBST(root, 16);
     root = insertIntoBST(root, 1);
     root = insertIntoBST(root, 4);
     root = insertIntoBST(root, 7);
+
+    // traverse tree
     treeTraverse(root);
+
+    // search element in tree
+    Node* ans = Search(root,1);
+
+    
     return 0;
 }
