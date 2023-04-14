@@ -1,4 +1,6 @@
+// BINARY TREE
 #include <iostream>
+#include <queue>
 using namespace std;
 
 class Node
@@ -34,9 +36,11 @@ Node *buildTree(Node *root)
     return root;
 }
 
+// inorder Traversal
 void inOrderTrav(Node *root)
 {
-    if (root == NULL){
+    if (root == NULL)
+    {
         return;
     }
 
@@ -45,9 +49,12 @@ void inOrderTrav(Node *root)
     inOrderTrav(root->right);
     return;
 }
+
+// priorder Traversal
 void priOrderTrav(Node *root)
 {
-    if (root == NULL){
+    if (root == NULL)
+    {
         return;
     }
 
@@ -56,9 +63,12 @@ void priOrderTrav(Node *root)
     inOrderTrav(root->right);
     return;
 }
+
+// postOrder Traversal
 void postOrderTrav(Node *root)
 {
-    if (root == NULL){
+    if (root == NULL)
+    {
         return;
     }
 
@@ -66,11 +76,51 @@ void postOrderTrav(Node *root)
     inOrderTrav(root->right);
     cout << root->data << " ";
     return;
+}
+
+// Level order traversal
+// using queue
+void blockLevelTraversal(Node *root)
+{
+    queue<Node *> q;
+    q.push(root);
+    q.push(NULL);
+    while (!q.empty())
+    {
+        Node *temp = q.front();
+        if(temp!= NULL){ cout << temp->data << " ";}
+        q.pop();
+        if (temp == NULL)
+        {
+            cout << endl;
+            if (!q.empty())
+            {
+                q.push(NULL);
+            }
+        }
+        else
+        {
+            if (temp->left)
+            {
+                q.push(temp->left);
+            }
+            if (temp->right)
+            {
+                q.push(temp->right);
+            }
+        }
+    }
 }
 
 int main()
 {
     Node *root = NULL;
     root = buildTree(root);
-    inOrderTrav(root);
+    // inOrderTrav(root);
+    cout << endl;
+    blockLevelTraversal(root);
+    cout<<endl;
+    // inOrderTrav(root);
 }
+
+// 1 2 3 -1 -1 4 -1 -1 6 -1 -1
