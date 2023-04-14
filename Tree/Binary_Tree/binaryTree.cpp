@@ -32,6 +32,7 @@ Node* buildTree(Node* root){
 }
 
 void inOrderTrav(Node* root){
+    if(root == NULL) return;
     inOrderTrav(root->left);
     cout<<root->data<<endl;
     inOrderTrav(root->right);
