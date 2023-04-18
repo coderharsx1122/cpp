@@ -56,17 +56,26 @@ int height(Node *root)
 }
 
 // diameter of the tree
-int diamerter(Node *root)
+pair<int, int> diamerter(Node *root)
 {
     if (root == NULL)
-        return 0;
-    int left = height(root->left);          // height of left subtree
-    int right = height(root->right);        // height of right subtree
-    int cur = left + right + 1;             // find the diameter for current node
-    int dleft = diamerter(root->left);      // find the diamerter for left node
-    int dright = diamerter(root->right);    // find the diameter for right node
-    int ans = max(cur, max(dleft, dright)); // find the maximum diameter of all nodes
-    return ans;                             // return ans
+    {
+        pair<int, int> p = make_pair(0, 0);
+        return p;
+    }
+    pair<int, int> left;
+    pair<int, int> right;
+    left = diamerter(root->left);
+    right = diamerter(root->right);
+    int hleft = left.first ;
+    int hright = right.first ;
+    int cur = hleft + hright + 1;
+
+    int ans = max(cur, max(left.second, right.second));
+    pair<int, int> answer;
+    answer.first = max(hleft+1,hright+1);
+    answer.second = ans;
+    return answer;
 }
 
 // inorder Traversal
@@ -91,8 +100,7 @@ int main()
     int heigh = height(root);
     cout << "Height " << heigh;
     cout << endl;
-    int d = diamerter(root);
-    cout << "Diameter " << d << endl;
+    pair<int, int> d = diamerter(root);
+    cout << "Diameter " << d.second << endl;
 }
-
 // 1 2 3 -1 -1 4 -1 -1 6 -1 -1
