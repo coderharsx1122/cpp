@@ -36,21 +36,6 @@ Node *buildTree(Node *root)
 }
 
 // top view of BST
-// void rightView(Node* root){
-//     if(root==NULL) return;
-//     cout<<root->data<<" ";
-//     rightView(root->right);
-// }
-// void leftView(Node* root){
-//     if(root==NULL) return;
-//     leftView(root->left);
-//     cout<<root->data<<" ";
-// }
-// void topView(Node* root){
-//    leftView(root);
-//    rightView(root->right);
-// }
-
 vector<int> topView(Node *root)
 {
     //    this map includes the verticle distance and currsponding node
